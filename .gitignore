@@ -1,0 +1,10 @@
+# Clion
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Visual studio
+.vs/
+
+bin/
+build/
