@@ -1,11 +1,16 @@
-# Set static linking
+## Set static linking
 set(SFML_STATIC_LIBRARIES TRUE)
 set(BUILD_SHARED_LIBS FALSE)
 
+## Set SFML paths
+# Path for find SFMLConfig.cmake
 set(SFML_DIR ${CMAKE_MODULE_PATH})
+# SFML root path
 set(SFML_ROOT ${PROJECT_EXTLIBS_DIR}/libs-SFML/)
 
+# Path to dependecies libs folder
 set(SFML_LIBS_DEPENDENCIES_DIR ${PROJECT_EXTLIBS_DIR}/libs-SFML/extlibs/libs-mingw/${SYSTEM_BIT_POSTFIX})
+# Path to dependecies includes folder
 set(SFML_INCLUDE_DEPENDENCIES_DIR ${PROJECT_EXTLIBS_DIR}/libs-SFML/extlibs/headers)
 
 set(ENV{OPENALDIR} ${SFML_LIBS_DEPENDENCIES_DIR})
@@ -29,14 +34,27 @@ set(SFML_LIBRARIES
         sfml-graphics
         sfml-audio)
 
+## Set path to SFML compiled libs
+foreach(SFML_CUR_TARGET ${SFML_LIBRARIES})
+    set_target_properties(${SFML_CUR_TARGET} PROPERTIES
+            ARCHIVE_OUTPUT_DIRECTORY ${SFML_ROOT}/lib/${PROJECT_BUILD_TYPE}
+            SHARED_OUTPUT_DIRECTORY ${SFML_ROOT}/lib/${PROJECT_BUILD_TYPE})
+endforeach()
+
+# If Vorbies libs not found in default paths
+if (NOT DEFINED ${VORBIS_FOUND})
+    set(VORBIS_LIBRARIES
+            ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbisenc.a
+            ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbisfile.a
+            ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbis.a
+            ${SFML_LIBS_DEPENDENCIES_DIR}/libogg.a)
+endif()
+
 set(SFML_DEPENDENCIES
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libfreetype.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libopenal32.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libFLAC.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbisenc.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbisfile.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libvorbis.a
-        ${SFML_LIBS_DEPENDENCIES_DIR}/libogg.a)
+        ${FREETYPE_LIBRARY}
+        ${OPENAL_LIBRARY}
+        ${FLAC_LIBRARY}
+        ${VORBIS_LIBRARIES})
 
 set(SFML_INCLUDE_DIR
         ${PROJECT_EXTLIBS_DIR}/libs-SFML/include)
