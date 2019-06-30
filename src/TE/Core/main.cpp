@@ -1,30 +1,13 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
+#include <sol/sol.hpp>
+#include <cassert>
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+int main() {
+    sol::state lua;
+    lua.open_libraries(sol::lib::base);
+    int x = 0;
+    lua.set_function("beep", [&x]{ ++x; });
+    lua.script("beep()");
+    assert(x == 1);
 
-    sf::Music music;
-    if (!music.openFromFile("bum.ogg"))
-        return -1; // error
-    music.play();
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-    return 0;
+    lua.script("print(\"456\")");
 }

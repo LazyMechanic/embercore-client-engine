@@ -19,9 +19,10 @@ set(TRUEENGINE_ALL_SRCS
 add_executable(TrueEngine
         ${TRUEENGINE_ALL_SRCS})
 
-add_dependencies(TrueEngine
-        ${SFML_LIBRARIES}
-        ${LUA_LIBRARIES})
+#### add_dependencies(TrueEngine
+####         liblua)
+
+#### message(${LUA_LIBRARIES})
 
 set_target_properties(TrueEngine PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${PROJECT_OUTPUT_DIR})
@@ -31,9 +32,11 @@ target_link_libraries(TrueEngine
         ${SFML_LIBRARIES}
         ${SFML_DEPENDENCIES}
         ${LUA_LIBRARIES})
+        #${PROJECT_DIR}/extlibs/libs-lua/lib/release/liblua53.a)
 
 # Include directory
 target_include_directories(TrueEngine
-        PRIVATE ${PROJECT_SRC_DIR}
+        PUBLIC ${PROJECT_SRC_DIR}
         PUBLIC ${SFML_INCLUDE_DIR}
-        PRIVATE ${LUA_INCLUDE_DIR})
+        PUBLIC ${SOL2_INCLUDE_DIR}
+        PUBLIC ${LUA_INCLUDE_DIR})

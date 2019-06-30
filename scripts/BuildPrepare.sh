@@ -13,13 +13,46 @@ fi
 # Clear include folder from previous files
 rm -rf $LUA_DIR/include/*
 
-# Copy all headers to include folder
+if [ ! -d "$LUA_DIR/lib/" ]
+then
+    mkdir $LUA_DIR/lib/
+fi
+
+# Create release folder
+if [ ! -d "$LUA_DIR/lib/release/" ]
+then
+    mkdir $LUA_DIR/lib/release/
+fi
+
+# Create release include folder
+if [ ! -d "$LUA_DIR/lib/release/include/" ]
+then
+    mkdir $LUA_DIR/lib/release/include/
+fi
+
+# Create debug folder
+if [ ! -d "$LUA_DIR/lib/debug/" ]
+then
+    mkdir $LUA_DIR/lib/debug/
+fi
+
+# Create debug include folder
+if [ ! -d "$LUA_DIR/lib/debug/include/" ]
+then
+    mkdir $LUA_DIR/lib/debug/include/
+fi
+
+rm -rf $LUA_DIR/lib/release/include/*
+rm -rf $LUA_DIR/lib/debug/include/*
+
+# Copy all headers to includes folder
 find $LUA_DIR/ -type f | grep -i ".h$" | while read -r header ; do
     cp $header $LUA_DIR/include/
+    cp $header $LUA_DIR/lib/release/include/
+    cp $header $LUA_DIR/lib/debug/include/
 done
 
-#find $LUA_DIR/ -type f | grep -i ".h$" | xargs -i cp -a {} $LUA_DIR/include/
-
+# Create CMake project
 if [ -f "$LUA_DIR/CMakeLists.txt" ]
 then
     rm $LUA_DIR/CMakeLists.txt

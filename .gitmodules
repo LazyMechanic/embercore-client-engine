@@ -4,3 +4,6 @@
 [submodule "extlibs/libs-sol2"]
 	path = extlibs/libs-sol2
 	url = https://github.com/ThePhD/sol2.git
+[submodule "extlibs/libs-lua"]
+	path = extlibs/libs-lua
+	url = https://github.com/lua/lua.git
