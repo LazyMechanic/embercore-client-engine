@@ -1,9 +1,0 @@
-[submodule "extlibs/libs-SFML"]
-	path = extlibs/libs-SFML
-	url = https://github.com/SFML/SFML
-[submodule "extlibs/libs-sol2"]
-	path = extlibs/libs-sol2
-	url = https://github.com/ThePhD/sol2.git
-[submodule "extlibs/libs-lua"]
-	path = extlibs/libs-lua
-	url = https://github.com/lua/lua.git
