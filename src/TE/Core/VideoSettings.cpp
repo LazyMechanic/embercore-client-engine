@@ -3,7 +3,7 @@
 // Created by LazyMechanic on 23.06.2019.
 //
 
-#include <TE/Core/VideoSettings.h>
+#include "VideoSettings.h"
 
 namespace te {
 VideoSettings::VideoSettings() :

@@ -2,7 +2,7 @@
 // Created by LazyMechanic on 30.06.2019.
 //
 
-#include <TE/Core/Input.h>
+#include "Input.h"
 
 namespace te {
 void Input::update()

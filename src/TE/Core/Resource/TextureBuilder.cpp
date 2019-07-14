@@ -1,4 +1,4 @@
-#include <TE/Core/Resource/TextureBuilder.h>
+#include "TextureBuilder.h"
 
 namespace te {
 void TextureBuilder::build()

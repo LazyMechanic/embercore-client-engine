@@ -4,7 +4,7 @@
 #include <thread>
 #include <chrono>
 
-#include <TE/Core/TrueEngine.h>
+#include "TrueEngine.h"
 
 namespace te {
 TrueEngine::TrueEngine(const VideoSettings &startVideoSettings, const sf::String &title, const sf::Image &icon) : 

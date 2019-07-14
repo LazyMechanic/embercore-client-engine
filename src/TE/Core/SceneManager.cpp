@@ -1,4 +1,4 @@
-#include <TE/Core/SceneManager.h>
+#include "SceneManager.h"
 
 namespace te {
 SceneManager::SceneManager(TrueEngine* engine) :

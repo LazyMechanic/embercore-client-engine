@@ -1,4 +1,4 @@
-#include <TE/Core/Resource/ResourceManager.h>
+#include "ResourceManager.h"
 
 #include <stdexcept>
 
