@@ -11,22 +11,22 @@ namespace te {
 class VideoSettings {
 public:
     enum WindowMode {
-        Windowed,
-        Fullscreen,
-        BorderlessWindow
+        Windowed = sf::Style::Default,
+        Fullscreen = sf::Style::Fullscreen,
+        BorderlessWindow = sf::Style::None
     };
 
     /**
-     * Default VideoSettings constructor
+     * \brief Default VideoSettings constructor
      */
     VideoSettings();
 
     /**
-     * Specific VideoSettings constructor
-     * @param videoMode Include size of window and bits per pixel
-     * @param verticalSync Enable or disable vertical synchronization
-     * @param windowMode Set window mode
-     * @param framerateLimit Set framerate limit
+     * \brief Specific VideoSettings constructor
+     * \param videoMode Include size of window and bits per pixel
+     * \param verticalSync Enable or disable vertical synchronization
+     * \param windowMode Set window mode
+     * \param framerateLimit Set framerate limit
      */
     VideoSettings(const sf::VideoMode &videoMode,
                   bool verticalSync,
@@ -34,27 +34,27 @@ public:
                   unsigned int framerateLimit);
 
     /**
-     * VideoSettings destructor
+     * \brief VideoSettings destructor
      */
     ~VideoSettings() = default;
 
     /**
-     * Include size of window and bits per pixel
+     * \brief Include size of window and bits per pixel
      */
     sf::VideoMode videoMode;
 
     /**
-     * Enable or disable vertical synchronization
+     * \brief Enable or disable vertical synchronization
      */
     bool verticalSync;
 
     /**
-     * Set window mode
+     * \brief Set window mode
      */
     WindowMode windowMode;
 
     /**
-     * Set framerate limit
+     * \brief Set framerate limit
      */
     unsigned int framerateLimit;
 };

@@ -5,6 +5,7 @@ cmake-build-release/
 
 # Visual studio
 .vs/
+CMakeSettings.json
 
-bin/
 build/
+out/

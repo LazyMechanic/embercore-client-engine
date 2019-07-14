@@ -3,11 +3,11 @@
 // Created by LazyMechanic on 23.06.2019.
 //
 
-#include "VideoSettings.h"
+#include <TE/Core/VideoSettings.h>
 
 namespace te {
 VideoSettings::VideoSettings() :
-        videoMode(sf::VideoMode()), verticalSync(false), windowMode(WindowMode::Fullscreen)
+        videoMode(sf::VideoMode()), verticalSync(false), windowMode(WindowMode::Fullscreen), framerateLimit(60)
 {
 
 }

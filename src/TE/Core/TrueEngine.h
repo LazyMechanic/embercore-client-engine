@@ -4,26 +4,41 @@
 
 #pragma once
 
-#include <string>
-#include <istream>
-#include <TE/Core/Application.h>
+#include <memory>
+
+#include <SFML/Graphics.hpp>
+#include <TE/Core/VideoSettings.h>
 
 namespace te {
 class TrueEngine {
 public:
-    /**
-     * Specific TrueEngine constructor
-     * @param appTraits Traits for start application
-     * @param videoSettings Video settings by default
-     */
-    TrueEngine(const AppTraits& appTraits, const VideoSettings& videoSettings);
+    TrueEngine(const VideoSettings& startVideoSettings, const sf::String& title, const sf::Image& icon);
 
-    ~TrueEngine();
+    ~TrueEngine() = default;
 
     int run();
 
-    Application& getApplication();
+    bool isRunning() const;
+
+    void setVideoSettings(const VideoSettings& newSettings);
+
+    const VideoSettings& getVideoSettings() const;
+
+    void draw(const sf::Drawable& obj, const sf::RenderStates& states = sf::RenderStates::Default);
+
+    sf::RenderWindow& getWindow();
+
 private:
-    Application m_application;
+    void handleEvents();
+
+    void update(float dt);
+
+    void display();
+
+    sf::RenderWindow m_window;
+
+    VideoSettings m_videoSettings;
+
+    bool m_isRunning = true;
 };
 }

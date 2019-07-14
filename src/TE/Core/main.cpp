@@ -1,13 +1,17 @@
-#include <sol/sol.hpp>
-#include <cassert>
+#include <TE/Core/TrueEngine.h>
 
-int main() {
-    sol::state lua;
-    lua.open_libraries(sol::lib::base);
-    int x = 0;
-    lua.set_function("beep", [&x]{ ++x; });
-    lua.script("beep()");
-    assert(x == 1);
+int main()
+{
+    /*sf::Image icon;
+    icon.loadFromFile("embercore.icon");
 
-    lua.script("print(\"456\")");
+    te::TrueEngine engine(te::VideoSettings(), "", icon);
+    try { 
+        engine.run();
+    }
+    catch(...) {
+        return 1;
+    }*/
+
+    return 0;
 }

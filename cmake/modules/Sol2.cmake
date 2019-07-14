@@ -1,2 +1,8 @@
-set(SOL2_INCLUDE_DIR ${PROJECT_EXTLIBS_DIR}/libs-sol2/include)
-#add_definitions(-DSOL_USING_CXX_LUA=1)
+find_package(sol2 CONFIG REQUIRED)
+
+if (NOT ${sol2_FOUND})
+    message(FATAL_ERROR "Sol2 couldn't be located")
+endif()
+
+set(SOL2_LIBRARIES
+        sol2::sol2)
