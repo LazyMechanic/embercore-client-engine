@@ -29,7 +29,6 @@ $ mkdir release
 $ cd release/
 $ cmake -DCMAKE_BUILD_TYPE=Release \
     -G "MinGW Makefiles" \
-    -DCMAKE_INSTALL_PREFIX=/your/path/to/install/client \ 
     ../..
 ```
 
@@ -39,7 +38,6 @@ $ mkdir debug
 $ cd debug/
 $ cmake -DCMAKE_BUILD_TYPE=Debug \
     -G "MinGW Makefiles" \
-    -DCMAKE_INSTALL_PREFIX=/your/path/to/install/client \ 
     ../..
 ```
 
@@ -58,6 +56,16 @@ If *dependencies* installed into specific directory then you need set *<DEPENDEN
 -DEnTT_DIR="D:/dev/EnTT/cmake"
 # Sol2
 -Dsol2_DIR="D:/dev/sol2/lib/cmake/sol2"
+```
+
+Set specific path for install:
+```bash
+-DCMAKE_INSTALL_PREFIX=/your/path/to/install/client
+```
+
+Link *SFML* as static library:
+```bash
+-DSFML_STATIC_LIBRARIES=1
 ```
 
 Generate specific project, for example *Visual Studio solution* generator:
@@ -82,3 +90,21 @@ To install protocol to the specified install folder (call from *release* or *deb
 ```bash
 $ cmake --install .
 ```
+
+# FAQ
+Q: I use MSVC and I have unresolved symbols, and some *mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease'* errors on protobuf lib.<br/>
+A: You need compile *Protobuf* with cmake define *-Dprotobuf_MSVC_STATIC_RUNTIME=OFF*
+
+Q: When I set cmake generator is "MinGW Makefiles" then i have error:
+```bash
+  sh.exe was found in your PATH, here:                                
+                                                                      
+  # some path #                                           
+                                                                      
+  For MinGW make to work correctly sh.exe must NOT be in your path.   
+                                                                      
+  Run cmake from a shell that does not have sh.exe in your PATH.
+```
+A: Two ways to resolve it:<br/>
+1. Delete *sh.exe* from *PATH*
+2. Try compile one more time (I don't know why, but it works)

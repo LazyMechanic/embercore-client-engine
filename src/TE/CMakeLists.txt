@@ -28,24 +28,6 @@ target_include_directories(TrueEngine
     PRIVATE ${PROJECT_SRC_DIR}
     PUBLIC ${TRUEENGINE_DEPENDENCIES_INCLUDES})
 
-# Set SFML dll suffix for copy
-if(${PROJECT_BUILD_TYPE} STREQUAL "debug")
-    set(SFML_DLL_SUFFIX "-d-2")
-endif()
-if(${PROJECT_BUILD_TYPE} STREQUAL "release")
-    set(SFML_DLL_SUFFIX "-2")
-endif()
-
-include(TrueEngineBuildHelper)
-te_copy_dependencies_bins(TARGET TrueEngine
-    DEPENDENCY_PATTERNS
-        "${SFML_DIR}/../../../bin/*sfml-window${SFML_DLL_SUFFIX}.dll"
-        "${SFML_DIR}/../../../bin/*sfml-system${SFML_DLL_SUFFIX}.dll"
-        "${SFML_DIR}/../../../bin/*sfml-network${SFML_DLL_SUFFIX}.dll"
-        "${SFML_DIR}/../../../bin/*sfml-graphics${SFML_DLL_SUFFIX}.dll"
-        "${SFML_DIR}/../../../bin/*sfml-audio${SFML_DLL_SUFFIX}.dll"
-        "${SFML_DIR}/../../../bin/openal32.dll"
-        "${LUA_DIR}/lua53.dll"
-    DESTINATION ${PROJECT_OUTPUT_DIR})
+include(TrueEngineDllCopy)
 
 install(DIRECTORY ${PROJECT_OUTPUT_DIR}/ DESTINATION ${CMAKE_INSTALL_PREFIX}/)
