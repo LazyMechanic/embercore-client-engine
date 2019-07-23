@@ -4,5 +4,5 @@ if (NOT ${sol2_FOUND})
     message(FATAL_ERROR "Sol2 couldn't be located")
 endif()
 
-set(SOL2_LIBRARIES
+set(SOL2_LIBRARIES_IN
         sol2::sol2)

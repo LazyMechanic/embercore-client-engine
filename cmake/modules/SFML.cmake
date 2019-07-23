@@ -4,7 +4,7 @@ if (NOT ${SFML_FOUND})
     message(FATAL_ERROR "SFML couldn't be located")
 endif()
 
-set(SFML_LIBRARIES
+set(SFML_LIBRARIES_IN
         sfml-system
         sfml-graphics
         sfml-network

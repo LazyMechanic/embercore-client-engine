@@ -1,5 +1,5 @@
 function(TE_COPY_DEPENDENCIES_BINS)
-    set(options OPTIONAL FAST)
+    set(options "")
     set(oneValueArgs TARGET DESTINATION)
     set(multiValueArgs DEPENDENCY_PATTERNS)
     cmake_parse_arguments(TE "${options}" "${oneValueArgs}" "${multiValueArgs}" "${ARGN}")
@@ -17,4 +17,19 @@ function(TE_COPY_DEPENDENCIES_BINS)
     endforeach()
 
     add_dependencies(${TE_TARGET} ${COPY_TARGETS})
+endfunction()
+
+function(TE_ADD_PREFIX_TO_SOURCES)
+    set(options "")
+    set(oneValueArgs PREFIX OUT)
+    set(multiValueArgs FILES)
+    cmake_parse_arguments(TE "${options}" "${oneValueArgs}" "${multiValueArgs}" "${ARGN}")
+
+    set(SOURCE_FILES "")
+
+    foreach(SOURCE_FILE ${TE_FILES})
+        set(SOURCE_FILES "${SOURCE_FILES}" "${TE_PREFIX}/${SOURCE_FILE}")
+    endforeach()
+
+    set(${TE_OUT} "${SOURCE_FILES}" PARENT_SCOPE)
 endfunction()

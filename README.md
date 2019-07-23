@@ -9,6 +9,8 @@ To build this project you need install:
 - [Protobuf](https://github.com/protocolbuffers/protobuf)
 - [EnTT](https://github.com/skypjack/entt)
 - [EmbercoreProtocol](https://github.com/BoringStudio/embercore-protocol)
+- [cxxopts](https://github.com/jarro2783/cxxopts)
+- [yaml-cpp](https://github.com/jbeder/yaml-cpp)
 
 # Getting sources
 Download from github:
@@ -45,17 +47,21 @@ $ cmake -DCMAKE_BUILD_TYPE=Debug \
 If *dependencies* installed into specific directory then you need set *<DEPENDENCY_NAME>_DIR* to directory with installed *<DEPENDENCY_NAME>-config.cmake* or *<DEPENDENCY_NAME>Config.cmake* file (for lua you need set directory to root of lua), for example:
 ```bash
 # SFML
--DSFML_DIR="D:/dev/SFML-2.5.1/clang/lib/cmake/SFML"
+-DSFML_DIR="D:/dev/SFML-2.5.1/msvc/lib/cmake/SFML"
 # Protobuf
--DProtobuf_DIR="D:/dev/protobuf/mingw/lib/cmake/protobuf"
+-DProtobuf_DIR="D:/dev/protobuf/msvc/lib/cmake/protobuf"
 # Lua
 -DLUA_DIR="D:/dev/lua/mingw"
 # EmbercoreProtocol
--DEmbercoreProtocol_DIR="D:/dev/embercore-protocol/clang/cmake"
+-DEmbercoreProtocol_DIR="D:/dev/embercore-protocol/msvc/cmake"
 # EnTT
 -DEnTT_DIR="D:/dev/EnTT/cmake"
 # Sol2
 -Dsol2_DIR="D:/dev/sol2/lib/cmake/sol2"
+# cxxopts
+-Dcxxopts_DIR="D:/dev/cxxopts/lib/cmake/cxxopts"
+# yaml-cpp
+-Dyaml-cpp_DIR="D:/dev/yaml-cpp/msvc/CMake"
 ```
 
 Set specific path for install:

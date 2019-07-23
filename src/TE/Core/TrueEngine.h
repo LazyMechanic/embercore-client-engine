@@ -4,41 +4,39 @@
 
 #pragma once
 
-#include <memory>
+#include <filesystem>
 
 #include <SFML/Graphics.hpp>
-#include <TE/Core/VideoSettings.h>
+
+#include "te/util/Singleton.h"
+#include "te/core/VideoSettings.h"
 
 namespace te {
-class TrueEngine {
+class TrueEngine : public Singleton<TrueEngine> {
 public:
-    TrueEngine(const VideoSettings& startVideoSettings, const sf::String& title, const sf::Image& icon);
+    TrueEngine() = default;
+
+    explicit TrueEngine(const std::filesystem::path& mainConfigFilePath);
 
     ~TrueEngine() = default;
 
-    int run();
+    void run();
 
     bool isRunning() const;
-
-    void setVideoSettings(const VideoSettings& newSettings);
-
-    const VideoSettings& getVideoSettings() const;
 
     void draw(const sf::Drawable& obj, const sf::RenderStates& states = sf::RenderStates::Default);
 
     sf::RenderWindow& getWindow();
 
 private:
+    sf::RenderWindow m_window;
+
+    bool m_isRunning = true;
+
     void handleEvents();
 
     void update(float dt);
 
     void display();
-
-    sf::RenderWindow m_window;
-
-    VideoSettings m_videoSettings;
-
-    bool m_isRunning = true;
 };
-}
+} // namespace te

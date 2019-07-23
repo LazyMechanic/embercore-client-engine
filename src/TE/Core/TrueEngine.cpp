@@ -7,15 +7,19 @@
 #include "TrueEngine.h"
 
 namespace te {
-TrueEngine::TrueEngine(const VideoSettings &startVideoSettings, const sf::String &title, const sf::Image &icon) : 
-    m_videoSettings(startVideoSettings),
-    m_isRunning(true)
+//TrueEngine::TrueEngine(const VideoSettings &startVideoSettings, const sf::String &title, const sf::Image &icon) : 
+//    m_videoSettings(startVideoSettings),
+//    m_isRunning(true)
+//{
+//    m_window.create(startVideoSettings.videoMode, title, startVideoSettings.windowMode);
+//    m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+//}
+
+TrueEngine::TrueEngine(const std::filesystem::path& mainConfigFilePath)
 {
-    m_window.create(startVideoSettings.videoMode, title, startVideoSettings.windowMode);
-    m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
-int TrueEngine::run()
+void TrueEngine::run()
 {
     using namespace std::chrono_literals;
     using SecondPartial = std::chrono::duration<float, std::ratio<1>>;
@@ -34,7 +38,6 @@ int TrueEngine::run()
 
         //std::this_thread::sleep_until(currentTime + 20ms);
     }
-    return 0;
 }
 
 sf::RenderWindow& TrueEngine::getWindow()
@@ -46,9 +49,13 @@ void TrueEngine::handleEvents()
 {
     sf::Event e;
     while(m_window.pollEvent(e)) {
+        
         switch (e.type) {
         case sf::Event::EventType::Closed:
             m_isRunning = false;
+            break;
+        default:
+            // Unexpected event
             break;
         }
     }
@@ -68,16 +75,6 @@ void TrueEngine::display()
 bool TrueEngine::isRunning() const
 {
     return m_isRunning;
-}
-
-void TrueEngine::setVideoSettings(const VideoSettings &newSettings)
-{
-    // TODO: set new video settings
-}
-
-const VideoSettings &TrueEngine::getVideoSettings() const
-{
-    return m_videoSettings;
 }
 
 void TrueEngine::draw(const sf::Drawable& obj, const sf::RenderStates& states)
