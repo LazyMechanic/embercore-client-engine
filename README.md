@@ -70,6 +70,11 @@ If *dependencies* installed into specific directory then you need set `<DEPENDEN
 -Dspdlog_DIR="D:/dev/spdlog/msvc/lib/spdlog/cmake"
 ```
 
+Disable C++17 deprecation warnings
+```bash
+-DTE_DISABLE_CXX17_DEPRECATION_WARNINGS=ON
+```
+
 Set specific path for install:
 ```bash
 -DCMAKE_INSTALL_PREFIX=/your/path/to/install/client
