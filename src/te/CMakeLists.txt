@@ -55,15 +55,6 @@ te_add_prefix_to_sources(PREFIX "resource"
         "TextureBuilder.h"
         "TextureBuilder.cpp")
         
-############# SCENE #############
-te_add_prefix_to_sources(PREFIX "scene"
-    OUT TE_SCENE_SRCS
-    FILES 
-        "Scene.h"
-        "Scene.cpp"
-        "SceneManager.h"
-        "SceneManager.cpp")
-        
 ############# SCRIPT #############
 te_add_prefix_to_sources(PREFIX "script"
     OUT TE_SCRIPT_SRCS
@@ -91,7 +82,6 @@ set(TE_SRCS
     "${TE_GRAPHICS_SRCS}"
     "${TE_NETWORK_SRCS}"
     "${TE_RESOURCE_SRCS}"
-    "${TE_SCENE_SRCS}"
     "${TE_SCRIPT_SRCS}"
     "${TE_UTIL_SRCS}")
 

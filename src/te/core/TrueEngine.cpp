@@ -11,7 +11,6 @@
 #include "te/filesystem/Filesystem.h"
 #include "te/graphics/Window.h"
 #include "te/resource/ResourceManager.h"
-#include "te/scene/SceneManager.h"
 #include "te/script/ScriptManager.h"
 
 namespace te {
@@ -39,10 +38,6 @@ TrueEngine::TrueEngine(const std::filesystem::path& bootConfigFilePath) : m_isRu
     const auto iconPath = yamlDocument["IconPath"].as<std::string>();
     const auto videoSettingsPath = yamlDocument["VideoSettingsPath"].as<std::string>();
     m_window = std::make_unique<Window>(title, iconPath, videoSettingsPath);
-
-    // Scene manager create
-    const auto startScenePath = yamlDocument["StartScenePath"].as<std::string>();
-    m_sceneManager = std::make_unique<SceneManager>(startScenePath);
 }
 
 TrueEngine::~TrueEngine() = default;

@@ -49,45 +49,10 @@ public:
     template <typename T>
     void critical(const T &msg);
 
-    template <typename... Args>
-    void force_log(spdlog::source_loc loc, spdlog::level::level_enum lvl, spdlog::string_view_t fmt, Args &&... args);
-
-    template <typename... Args>
-    void log(spdlog::source_loc loc, spdlog::level::level_enum lvl, spdlog::string_view_t fmt, Args &&... args);
-
-    template <typename... Args>
-    void log(spdlog::level::level_enum lvl, spdlog::string_view_t fmt, Args &&... args);
-
-    void log(spdlog::source_loc loc, spdlog::level::level_enum lvl, const spdlog::string_view_t msg);
-
-    void log(spdlog::level::level_enum lvl, spdlog::string_view_t msg);
-
-    template <typename T>
-    void log(spdlog::level::level_enum lvl, const T &msg);
-
-    // T can be statically converted to string_view
-    template <
-        class T,
-        typename std::enable_if<std::is_convertible<const T &, spdlog::string_view_t>::value, T>::type * = nullptr>
-    void log(spdlog::source_loc loc, spdlog::level::level_enum lvl, const T &msg);
-
-    // T cannot be statically converted to string_view or wstring_view
-    template <class T,
-              typename std::enable_if<!std::is_convertible<const T &, spdlog::string_view_t>::value &&
-                                          !spdlog::is_convertible_to_wstring_view<const T &>::value,
-                                      T>::type * = nullptr>
-    void log(spdlog::source_loc loc, spdlog::level::level_enum lvl, const T &msg);
-
 #ifdef SPDLOG_WCHAR_TO_UTF8_SUPPORT
 #ifndef _WIN32
 #error SPDLOG_WCHAR_TO_UTF8_SUPPORT only supported on windows
 #else
-    template <typename... Args>
-    void log(spdlog::source_loc source, spdlog::level::level_enum lvl, spdlog::wstring_view_t fmt, Args &&... args);
-
-    template <typename... Args>
-    void log(spdlog::level::level_enum lvl, spdlog::wstring_view_t fmt, Args &&... args);
-
     template <typename... Args>
     void trace(spdlog::wstring_view_t fmt, Args &&... args);
 
@@ -105,11 +70,6 @@ public:
 
     template <typename... Args>
     void critical(spdlog::wstring_view_t fmt, Args &&... args);
-
-    // T can be statically converted to wstring_view
-    template <class T,
-              typename std::enable_if<spdlog::is_convertible_to_wstring_view<const T &>::value, T>::type * = nullptr>
-    void log(spdlog::source_loc loc, spdlog::level::level_enum lvl, const T &msg);
 #endif // _WIN32
 #endif // SPDLOG_WCHAR_TO_UTF8_SUPPORT
 

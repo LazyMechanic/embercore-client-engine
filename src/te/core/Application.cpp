@@ -15,10 +15,10 @@ Application::Application(int argc, char** argv) : m_appDescription("General opti
 {
     // clang-format off
     m_appDescription.add_options()("config,c",
-                           po::value<std::filesystem::path>(),
-                           "Path to boot config file (\"./some/path/to/boot.yml\" for example)")
-                          ("help,h", 
-                           "Show help");
+                                   po::value<std::filesystem::path>(),
+                                   "Path to boot config file (\"./some/path/to/boot.yml\" for example)")
+                                  ("help,h", 
+                                   "Show help");
     // clang-format on
 
     po::store(po::parse_command_line(argc, argv, m_appDescription), m_appArgs);

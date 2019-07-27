@@ -5,6 +5,7 @@
 
 #include "te/filesystem/FilesystemReaderImpl.h"
 #include "te/filesystem/FilesystemWriterImpl.h"
+#include "te/util/Log.h"
 
 namespace te {
 Filesystem::Filesystem()
