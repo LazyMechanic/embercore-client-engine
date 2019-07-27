@@ -4,17 +4,19 @@ include(Protobuf)
 include(Protocol)
 include(SFML)
 include(Sol2)
-include(cxxopts)
 include(nlohmann_json)
 include(yaml-cpp)
+include(Boost)
+include(spdlog)
 
 set(TRUEENGINE_DEPENDENCIES_LIBS
-    ${LUA_LIBRARIES_IN}
-    ${SOL2_LIBRARIES_IN}
-    ${ENTT_LIBRARIES_IN}
-    ${SFML_LIBRARIES_IN}
-    ${PROTOBUF_LIBRARIES_IN}
-    ${PROTOCOL_LIBRARIES_IN}
-    ${CXXOPTS_LIBRARIES_IN}
-    ${NLOHMANN_JSON_LIBRARIES_IN}
-    ${YAML_CPP_LIBRARIES_IN})
+    "${LUA_LIBRARIES_IN}"
+    "${SOL2_LIBRARIES_IN}"
+    "${ENTT_LIBRARIES_IN}"
+    "${SFML_LIBRARIES_IN}"
+    "${PROTOBUF_LIBRARIES_IN}"
+    "${PROTOCOL_LIBRARIES_IN}"
+    "${NLOHMANN_JSON_LIBRARIES_IN}"
+    "${YAML_CPP_LIBRARIES_IN}"
+    "${BOOST_LIBRARIES_IN}"
+    "${SPDLOG_LIBRARIES_IN}")

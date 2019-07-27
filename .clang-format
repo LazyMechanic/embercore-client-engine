@@ -48,7 +48,23 @@ DerivePointerAlignment: 'true'
 FixNamespaceComments: 'true'
 IncludeBlocks: Regroup
 IncludeCategories:
+      #- Regex:           '^"te/util/'
+      #  Priority:        56
+      #- Regex:           '^"te/scene/'
+      #  Priority:        55
+      #- Regex:           '^"te/resource/'
+      #  Priority:        54
+      #- Regex:           '^"te/input/'
+      #  Priority:        53
+      #- Regex:           '^"te/filesystem/'
+      #  Priority:        52
+      #- Regex:           '^"te/core/'
+      #  Priority:        51
       - Regex:           '^"te/'
+        Priority:        50
+      - Regex:           '^[<"](spdlog)/'
+        Priority:        9
+      - Regex:           '^[<"](boost)/'
         Priority:        8
       - Regex:           '^[<"](yaml-cpp)/'
         Priority:        7
@@ -67,7 +83,7 @@ IncludeCategories:
 IndentCaseLabels: 'true'
 IndentPPDirectives: None
 IndentWidth: '4'
-IndentWrappedFunctionNames: 'false'
+IndentWrappedFunctionNames: 'true'
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: 'true'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
